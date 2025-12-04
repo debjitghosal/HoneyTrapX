@@ -130,7 +130,7 @@ This diagram summarizes the complete flow concisely.
 
 Completely invisible to the user
 
-3 fast + 10 rapid photos
+3 very-fast + 10 rapid photos
 
 Stored inside /uploads/
 
