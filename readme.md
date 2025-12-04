@@ -68,17 +68,13 @@ Designed as a controlled honeypot environment, it enables **real-time threat int
 
 HoneyTrapX/
 │
-├── index.php # Main deception honeypot (camera + GPS)
-├── continuous.php # Background GPS tracker endpoint
-├── admin.php # Admin dashboard
-├── log.txt # Combined logs (photos + GPS)
-├── uploads/ # All captured images
-├── logo.png # HoneyTrapX shield logo
-└── README.md # Documentation
-
-less
-Copy code
-
+├── index.php          # Main honeypot deception page (camera + GPS + progress bar + fake QR)
+├── continuous.php     # Background GPS tracking endpoint
+├── admin.php          # Admin dashboard (photos, logs, map links)
+├── log.txt            # Combined log file for photos + GPS data
+├── uploads/           # Auto-captured attacker images
+├── logo.png           # HoneyTrapX shield logo
+└── README.md          # Documentation
 ---
 
 ## 🏗️ System Architecture
