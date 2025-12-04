@@ -1,6 +1,6 @@
 🛡️ HoneyTrapX
 Deception-Driven Threat Intelligence & Intruder Evidence Collection System
-<p align="center"> <img src="logo.svg" width="240"> </p>
+<p align="center"> <img src="logo.png" width="240"> </p>
 
 HoneyTrapX is a stealth honeypot system engineered to silently gather photos, GPS location, device intelligence, and movement trails from threat actors who access the page.
 
