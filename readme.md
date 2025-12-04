@@ -31,6 +31,7 @@ Let’s start with the high-level system architecture:
 
 This diagram explains how user activity travels through the system.
 
+```mermaid
 flowchart TD
     A[User Device] -->|Permissions + Access| B[index.php]
     B -->|Stealth Photos| C[Uploads/]
