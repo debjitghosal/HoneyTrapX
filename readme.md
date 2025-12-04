@@ -83,7 +83,7 @@ Copy code
 
 ## 🏗️ System Architecture
 
-```mermaid
+
 flowchart TD
     A[User Device] -->|Opens Honeypot| B[index.php]
     B -->|Auto Photos| C[uploads/]
