@@ -68,18 +68,22 @@ Designed as a controlled honeypot environment, it enables **real-time threat int
 
 HoneyTrapX/
 │
-├── index.php          # Main honeypot deception page (camera + GPS + progress bar + fake QR)
-├── continuous.php     # Background GPS tracking endpoint
-├── admin.php          # Admin dashboard (photos, logs, map links)
-├── log.txt            # Combined log file for photos + GPS data
-├── uploads/           # Auto-captured attacker images
-├── logo.png           # HoneyTrapX shield logo
-└── README.md          # Documentation
+├── index.php # Main deception honeypot (camera + GPS)
+├── continuous.php # Background GPS tracker endpoint
+├── admin.php # Admin dashboard
+├── log.txt # Combined logs (photos + GPS)
+├── uploads/ # All captured images
+├── logo.png # HoneyTrapX shield logo
+└── README.md # Documentation
+
+less
+Copy code
+
 ---
 
 ## 🏗️ System Architecture
 
-
+```mermaid
 flowchart TD
     A[User Device] -->|Opens Honeypot| B[index.php]
     B -->|Auto Photos| C[uploads/]
@@ -90,7 +94,7 @@ flowchart TD
 
     E -->|Read Logs| F[admin.php]
     F -->|Display Evidence| G[Admin]
-
+    
 🛠️ Installation
 1️⃣ Install XAMPP
 Install XAMPP and start Apache.
