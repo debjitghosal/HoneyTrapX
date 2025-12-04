@@ -1,246 +1,253 @@
 🛡️ HoneyTrapX
 Deception-Driven Threat Intelligence & Intruder Evidence Collection System
-<p align="center"> <img src="logo.png" width="240"> </p>
+<p align="center"> <img src="logo.png" width="260"> </p>
 
-HoneyTrapX is a stealth honeypot system engineered to silently gather photos, GPS location, device intelligence, and movement trails from threat actors who access the page.
+HoneyTrapX is a stealth cyber deception system designed to monitor, analyze, and log intruder activity without detection.
+It silently captures photos, GPS coordinates, and location movements, then displays this intelligence inside a real-time admin dashboard.
 
-Originally built to study attacker behavior, HoneyTrapX functions as a deception environment that captures digital evidence without the intruder realizing it.
+This project demonstrates browser-level intelligence gathering, client-side deception techniques, and backend evidence logging, making it ideal for academic submissions, cybersecurity portfolios, and defensive security demonstrations.
 
-📘 System Diagrams
-🏗️ 1. System Architecture
+🚀 How HoneyTrapX Works (High-Level Overview)
+
+When an intruder opens the page:
+
+1️⃣ They see a fake loading screen
+2️⃣ Browser requests Camera + GPS permissions
+3️⃣ HoneyTrapX silently:
+
+Captures 13 photos
+
+Tracks GPS every 3 seconds
+
+Converts GPS → full human-readable address
+
+Saves all evidence
+
+This intelligence flows into a professional admin dashboard where you can monitor all activity.
+
+Let’s start with the high-level system architecture:
+
+🏗️ System Architecture
+
+This diagram explains how user activity travels through the system.
+
 flowchart TD
-    A[User Device<br>(Phone/Browser)] -->|Camera + GPS Permissions| B[index.php]
+    A[User Device] -->|Permissions + Access| B[index.php]
+    B -->|Stealth Photos| C[Uploads/]
+    B -->|GPS Data| D[continuous.php]
 
-    B -->|Auto Capture 13 Photos| C[Uploads Folder]
-    B -->|Continuous GPS<br>Location Updates| D[continuous.php]
+    C -->|Image Paths| E[log.txt]
+    D -->|Coordinates + Address| E
 
-    C -->|Photo File Path| E[log.txt]
-    D -->|Lat/Lon + Address| E
+    E -->|Read Logs| F[admin.php]
+    F -->|View Evidence| G[Admin]
 
-    E -->|Log Reading| F[admin.php<br>(Admin Dashboard)]
 
-    F -->|Display Logs + Photos| G[Admin User]
+✔ Clean
+✔ Minimal
+✔ Perfect for recruiters
 
-🔄 2. Data Flow Diagram (DFD Level 1)
+🔍 Data Capture Workflow
+
+HoneyTrapX captures two forms of data simultaneously:
+
+📸 1. Image Capture Pipeline
+
+Camera is opened silently
+
+User does not see their preview
+
+13 photos captured → uploaded → logged
+
+📍 2. GPS Tracking Pipeline
+
+WatchPosition constantly streams:
+
+latitude
+
+longitude
+
+precise address
+
+Logged every 3 seconds
+
+Here is the data flow between components:
+
+🔄 Data Flow Diagram (DFD – Level 1)
 flowchart LR
-    User[User] -->|Open Page| UI[index.php]
-    UI -->|Capture Photos| Camera[Camera API]
-    UI -->|Get GPS| GPS[Geolocation API]
+    User --> index.php --> Backend[(PHP Backend)]
+    Backend --> Uploads[(Images)]
+    Backend --> Logs[(GPS + Photo Logs)]
 
-    Camera -->|13 Photos| Backend[index.php (PHP)]
-    GPS -->|Lat/Lon| Backend
+    Admin --> admin.php --> Logs
+    Admin --> admin.php --> Uploads
 
-    Backend -->|Store Image| Uploads[(uploads/)]
-    Backend -->|Write Log| Logs[(log.txt)]
 
-    Admin[Admin User] -->|View Dashboard| Dashboard[admin.php]
-    Dashboard -->|Read Data| Logs
-    Dashboard -->|Read Photos| Uploads
+This gives recruiters a clear, precise idea of the system without overwhelming them.
 
-🧪 3. Use Case Diagram
-flowchart LR
-    User((User)) --> |Opens Page| System[(HoneyTrapX<br>Deception System)]
-    User --> |Grants Permissions| System
+🧪 Intruder Interaction Sequence
 
-    Admin((Admin)) --> |Views Real-Time Intelligence| Dashboard[Admin Panel]
+Now let’s break down what actually happens on the browser side:
 
-    System --> |Capture Photos| Uploads[(uploads/)]
-    System --> |Log GPS + Address| Logs[(log.txt)]
-    Dashboard --> |Displays Logs + Images| Admin
-
-📸 4. Sequence Diagram
 sequenceDiagram
     participant U as User
     participant B as Browser (JS)
     participant P as PHP Backend
-    participant F as Storage (Uploads + Logs)
+    participant F as Storage
 
-    U->>B: Open index.php
+    U->>B: Open HoneyTrapX
     B->>U: Request Camera + GPS Permissions
     U->>B: Allow
 
-    B->>B: Start Hidden Camera Stream
-    B->>P: Upload Photo #1
-    P->>F: Save Photo + Log
+    B->>B: Start Hidden Camera Capture
+    B->>P: Upload Multiple Photos
+    P->>F: Save Evidence
 
-    B->>P: Upload Remaining 12 Photos
-
-    loop Every 3 seconds
-        B->>B: Get GPS
-        B->>P: Send Lat/Lon + Address
-        P->>F: Append GPS Log
+    loop Every 3 Seconds
+        B->>B: Acquire GPS
+        B->>P: Send GPS + Address
+        P->>F: Write to Logs
     end
 
-    B->>U: Show Fake QR Code (Completed)
+    B->>U: Show Fake Success QR
 
-🔁 5. Activity Diagram
+
+This sequence diagram is clean, professional, recruiter-friendly.
+
+🔁 System Behavior Flow
 flowchart TD
-    A([User Opens Page]) --> B{Permissions Granted?}
-    B -->|No| A
-    B -->|Yes| C[Start Hidden Camera]
+    A[User Opens Page] --> B[Grant Permissions]
+    B --> C[Auto-Capture Photos]
+    C --> D[Continuous GPS Tracking]
+    D --> E[Log Evidence]
+    E --> F[Show Fake QR]
 
-    C --> D[Capture 3 Fast Photos]
-    D --> E[Capture 10 Rapid Photos]
 
-    E --> F[Begin Continuous GPS Tracking]
+This diagram summarizes the complete flow concisely.
 
-    F --> G[Write GPS Logs]
-
-    G --> H[Fill Progress Bar]
-
-    H --> I{13 Photos Done?}
-    I -->|No| H
-    I -->|Yes| J[Show QR Code]
-
-    J --> K([End])
-
-⚙️ Features
+⚙️ Key Features
 📸 Stealth Auto-Capture
 
-Silent camera activation
+Completely invisible to the user
 
-No preview shown to target
+3 fast + 10 rapid photos
 
-13 photos total:
+Stored inside /uploads/
 
-3 ultra-fast
-
-10 rapid (350ms gap)
-
-Stored automatically in /uploads/.
+Logged with timestamps
 
 📍 Continuous GPS Tracking
 
-Runs every 3 seconds
+High-accuracy mode
 
-Converts GPS → full address using OpenStreetMap Nominatim
+Captures every 3 seconds
 
-Logged in log.txt
+Reverse-geocoded into a real address
 
-Works globally via Cloudflare HTTPS tunnel
+Logged silently
 
-🛡️ Deception-Based Frontend
+🛡️ Deception-based UI
 
-Shows a fake loading screen
+Fake loading screen
 
-Smooth green progress bar
+Progress bar
 
-Ends with a “Payment Successful” QR code
+Fake payment “success” QR
 
-Target sees nothing suspicious
+Zero suspicion raised
 
 📊 Real-Time Admin Dashboard
 
-Dark theme UI
+Dark theme
 
-Auto refresh every 6 seconds
+Auto-refresh every 6 seconds
 
-Displays:
+Shows:
 
-Latest photos
+Latest captured images
 
-Truncated address below
+Address (expand on click)
 
-Expand full address on click
+Google Maps link
 
-Google Maps location link
-
-Full logs table
+Real-time logs
 
 📂 Project Structure
 HoneyTrapX/
 │
 ├── index.php          # Deception frontend (camera + GPS)
 ├── continuous.php     # GPS receiver
-├── admin.php          # Admin dashboard
-├── log.txt            # Logs (GPS + photos)
-├── uploads/           # Stored images
-├── logo.svg           # HoneyTrapX shield logo
+├── admin.php          # Admin monitoring dashboard
+├── log.txt            # Combined GPS + photo logs
+├── uploads/           # Stored photos
+├── logo.png           # HoneyTrapX shield logo
 └── README.md          # Documentation
 
 🖥️ Installation Guide
 1️⃣ Install XAMPP
 
-Start Apache.
+Start Apache server
 
-2️⃣ Move Project to htdocs
-
-Copy folder to:
-
+2️⃣ Move the project into htdocs
 C:\xampp\htdocs\HoneyTrapX
 
-3️⃣ Open On Laptop
+3️⃣ Run on laptop
 http://localhost/HoneyTrapX/
 
-4️⃣ Open on Phone (Same WiFi)
-
-Find laptop IP:
-
-192.168.x.x
-
-
-Then visit:
-
+4️⃣ Run on phone (same WiFi)
 http://192.168.x.x/HoneyTrapX/
 
-5️⃣ Open Anywhere (Mobile Data) — Cloudflare Tunnel
-
-Run:
-
+5️⃣ Run globally with Cloudflare Tunnel
 cloudflared tunnel --url http://localhost/HoneyTrapX
 
 
-You'll get a public HTTPS URL like:
+Produces a link like:
 
-https://shadow-trace-edge.trycloudflare.com
+https://yourname-edge.trycloudflare.com
 
-
-✔ Works globally
-✔ HTTPS permissions enabled
-
-6️⃣ Admin Panel
-
-Local:
-
+6️⃣ Admin Dashboard
 http://localhost/HoneyTrapX/admin.php
 
 
-Tunnel:
+or
 
-https://your-url.trycloudflare.com/admin.php
+https://your-tunnel-url.trycloudflare.com/admin.php
 
 📝 Log Format
 Photo Entry
-2025-12-04 12:01:37 | PHOTO | IP: 192.168.1.8 | LAT: xx.xxxx | LON: yy.yyyy | ADDRESS: XYZ | FILE: uploads/abc.jpg
+2025-12-04 12:01:37 | PHOTO | IP: 192.168.1.8 | LAT: xx.xxxx | LON: yy.yyyy | ADDRESS: XYZ | FILE: uploads/img.jpg
 
-Continuous GPS Entry
+GPS Entry
 2025-12-04 12:01:40 | CONTINUOUS | LAT: xx.xxxx | LON: yy.yyyy | ADDRESS: XYZ
 
 🤖 Technology Stack
-Area	Tech
+Component	Technology
 Frontend	HTML, CSS, JS
 Backend	PHP
-GPS	Geolocation API
-Camera	getUserMedia()
-Reverse Geocoding	OpenStreetMap API
-Server	Apache (XAMPP)
-Tunnel	Cloudflare Tunnel
-🛡️ Security Notice
+Camera API	navigator.mediaDevices
+GPS API	Geolocation API
+Reverse Geocoding	OpenStreetMap Nominatim
+Server	XAMPP Apache
+Secure Tunneling	Cloudflare Tunnel
+🛡️ Legal & Ethical Notice
 
-HoneyTrapX is designed as a cybersecurity research honeypot, not for harming or attacking users.
+HoneyTrapX is intended strictly for:
 
-Do not use it:
-❌ To trick innocent users
-❌ For surveillance
-❌ Against real attackers outside legal scope
+✔ Academic use
+✔ Cybersecurity research
+✔ Defensive security demonstrations
+✔ Intrusion analysis
 
-Use strictly for:
-✔ Research
-✔ Evidence collection
-✔ Cyber defense experiments
-✔ Academic project work
+Not permitted for:
 
-📤 GitHub Deployment
+❌ Real-world surveillance
+❌ Targeted tracking
+❌ Unlawful data collection
+❌ Privacy violations
+
+Use responsibly.
+
+📤 Pushing to GitHub
 git init
 git add .
 git commit -m "HoneyTrapX initial commit"
@@ -248,8 +255,7 @@ git remote add origin https://github.com/<username>/HoneyTrapX.git
 git branch -M main
 git push -u origin main
 
-🧑‍💻 Author
+👤 Author
 
 Debjit Ghosal
-
-(This is for educational purspose only.)
+HoneyTrapX is developed solely for ethical research and educational purposes.
