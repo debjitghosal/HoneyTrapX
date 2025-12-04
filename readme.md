@@ -9,14 +9,12 @@ Designed as a controlled honeypot environment, it enables **real-time threat int
 - [Features](#features)
 - [Project Structure](#project-structure)
 - [System Architecture](#system-architecture)
-- [Installation](#installation)
-- [Accessing the Honeypot](#accessing-the-honeypot)
 - [Admin Dashboard](#admin-dashboard)
 - [Log Format](#log-format)
+- [Quick Start Summary](#quick-start-summary)
 - [Technologies Used](#technologies-used)
 - [Security Notice](#security-notice)
 - [Author](#author)
-- [Quick Start Summary](#quick-start-summary)
 
 ---
 
@@ -48,6 +46,7 @@ Designed as a controlled honeypot environment, it enables **real-time threat int
 - Fake “Payment Success” QR code  
 - Appears like a harmless webpage to the target  
 - All tracking is invisible
+<img width="258" height="392" alt="Screenshot 2025-12-04 134900" src="https://github.com/user-attachments/assets/ea01cd2a-3b39-4ad7-8097-cad984c6f3a9" />
 
 ---
 
@@ -66,87 +65,91 @@ Designed as a controlled honeypot environment, it enables **real-time threat int
 
 ## 📁 Project Structure
 
-HoneyTrapX/
-│
-├── index.php # Main deception honeypot (camera + GPS)
-├── continuous.php # Background GPS tracker endpoint
-├── admin.php # Admin dashboard
-├── log.txt # Combined logs (photos + GPS)
-├── uploads/ # All captured images
-├── logo.png # HoneyTrapX shield logo
-└── README.md # Documentation
+<img width="152" height="275" alt="Screenshot 2025-12-04 135819" src="https://github.com/user-attachments/assets/a696b4ae-4fd0-44fc-87a1-8cee220254e2" />
 
-less
-Copy code
 
 ---
 
 ## 🏗️ System Architecture
 
-
-flowchart TD
     A[User Device] -->|Opens Honeypot| B[index.php]
     B -->|Auto Photos| C[uploads/]
-    B -->|GPS Stream| D[continuous.php]
-
-    C -->|Image Path| E[log.txt]
+    B -->|GPS Stream| D[continuous.php]C -->|Image Path| E[log.txt]
     D -->|Lat/Lon + Address| E
 
     E -->|Read Logs| F[admin.php]
     F -->|Display Evidence| G[Admin]
     
-🛠️ Installation
-Install XAMPP and start Apache.
-📷 Photo Entry
-yaml
-Copy code
-2025-12-04 12:01:37 | PHOTO | IP: 192.168.1.8 | LAT: xx.xxxx | LON: yy.yyyy | ADDRESS: XYZ | FILE: uploads/photo.jpg
-📍 Continuous GPS Entry
-yaml
-Copy code
-2025-12-04 12:01:40 | CONTINUOUS | LAT: xx.xxxx | LON: yy.yyyy | ADDRESS: XYZ
-🧰 Technologies Used
-Component	Technology
-Frontend	HTML, CSS, JavaScript
-Backend	PHP (XAMPP Apache)
-Camera Access	getUserMedia()
-GPS Tracking	Geolocation API
-Reverse Geocoding	OpenStreetMap Nominatim
-Tunneling	Cloudflare Tunnel
-Logging	Custom PHP logger
+# ⚡ Quick Start Summary
+Start XAMPP Apache 
 
-🔐 Security Notice
+Open PowerShell:
+
+
+Terminal 1 : 
+
+cd C:\xampp\htdocs\gps_tracker
+
+& "C:\xampp\php\php.exe" -S localhost:8000
+
+
+Terminal 2:
+
+Global access (HTTPS): cloudflared tunnel --url http://localhost/HoneyTrapX (unique url genrated by clouadfare)
+
+Admin panel: 
+http://localhost/HoneyTrapX/admin.php
+
+<img width="1902" height="729" alt="Screenshot 2025-12-04 134812" src="https://github.com/user-attachments/assets/0dcb71e9-eeae-40dc-879a-db49b46c06b6" />
+<img width="1857" height="800" alt="Screenshot 2025-12-04 134825" src="https://github.com/user-attachments/assets/b187d1bd-90fb-466d-ac21-aa58edb00623" />
+
+
+# 🔥Technologies Used:
+
+
+🐘 PHP 
+
+⚡ JavaScript 
+
+🎨 CSS3 
+
+🧱 HTML5  
+
+🛠️ Apache (XAMPP) 
+
+🌐 Cloudflare Tunnel 
+
+📍 Geolocation API 
+
+📸 Camera API (getUserMedia) 
+
+🗺️ OpenStreetMap API  
+
+🛡️ Cloudflare Security
+
+
+# 🔐 Security Notice
 HoneyTrapX is intended strictly for cybersecurity research and academic purposes.
 
 Do NOT use it for:
 ❌ Privacy invasion
+
 ❌ Surveillance of innocent users
+
 ❌ Illegal monitoring
 
+
 You may use it for:
+
 ✔ Honeypot research
+
 ✔ Cyber defense simulations
+
 ✔ Threat analysis
+
 ✔ Academic submissions
+
 ✔ Ethical attacker behavior studies
 
-👤 Author
+# 👤 Author
 Debjit Ghosal
-Cybersecurity • AI • Full-Stack Engineering
-
-⚡ Quick Start Summary
-bash
-Copy code
-# Start XAMPP Apache
-# Open the honeypot on laptop
-http://localhost/HoneyTrapX/
-
-# Open from phone (same WiFi)
-http://192.168.x.x/HoneyTrapX/
-
-# Global access (HTTPS)
-cloudflared tunnel --url http://localhost/HoneyTrapX
-
-# Admin panel
-http://localhost/HoneyTrapX/admin.php
-yaml
