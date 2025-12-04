@@ -7,10 +7,9 @@ Designed as a controlled honeypot environment, it enables **real-time threat int
 
 ## 🗂️ Table of Contents
 - [Features](#features)
+- [Admin Dashboard](#admin-dashboard)
 - [Project Structure](#project-structure)
 - [System Architecture](#system-architecture)
-- [Admin Dashboard](#admin-dashboard)
-- [Log Format](#log-format)
 - [Quick Start Summary](#quick-start-summary)
 - [Technologies Used](#technologies-used)
 - [Security Notice](#security-notice)
