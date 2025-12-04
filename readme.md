@@ -83,7 +83,7 @@ Copy code
 
 ## 🏗️ System Architecture
 
-```mermaid
+
 flowchart TD
     A[User Device] -->|Opens Honeypot| B[index.php]
     B -->|Auto Photos| C[uploads/]
@@ -94,6 +94,7 @@ flowchart TD
 
     E -->|Read Logs| F[admin.php]
     F -->|Display Evidence| G[Admin]
+
 🛠️ Installation
 1️⃣ Install XAMPP
 Install XAMPP and start Apache.
