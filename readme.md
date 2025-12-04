@@ -96,75 +96,7 @@ flowchart TD
     F -->|Display Evidence| G[Admin]
     
 🛠️ Installation
-1️⃣ Install XAMPP
 Install XAMPP and start Apache.
-
-2️⃣ Move Project to htdocs
-Copy HoneyTrapX to:
-
-makefile
-Copy code
-C:\xampp\htdocs\HoneyTrapX
-3️⃣ Local Access
-Open:
-
-arduino
-Copy code
-http://localhost/HoneyTrapX/
-📱 Accessing the Honeypot From Phone (Same WiFi)
-Find laptop local IP:
-Example:
-
-Copy code
-192.168.1.8
-Open on phone:
-
-cpp
-Copy code
-http://192.168.1.8/HoneyTrapX/
-🌍 Global Access (Mobile Data Supported)
-Use Cloudflare Tunnel (recommended for HTTPS permission prompts):
-
-nginx
-Copy code
-cloudflared tunnel --url http://localhost/HoneyTrapX
-You’ll receive a global HTTPS URL like:
-
-arduino
-Copy code
-https://shadow-trace-edge.trycloudflare.com
-This works:
-
-On mobile data
-
-Across countries
-
-With correct camera + GPS permissions
-
-🖥️ Admin Dashboard
-Local:
-
-bash
-Copy code
-http://localhost/HoneyTrapX/admin.php
-Cloudflare tunnel:
-
-arduino
-Copy code
-https://your-link.trycloudflare.com/admin.php
-Dashboard shows:
-
-Latest photos
-
-Reverse geocoded address
-
-Click-to-expand full address
-
-Google Maps links
-
-Timestamp + IP logs
-
-🧾 Log Format
 📷 Photo Entry
 yaml
 Copy code
