@@ -44,10 +44,6 @@ flowchart TD
     F -->|View Evidence| G[Admin]
 
 
-✔ Clean
-✔ Minimal
-✔ Perfect for recruiters
-
 🔍 Data Capture Workflow
 
 HoneyTrapX captures two forms of data simultaneously:
