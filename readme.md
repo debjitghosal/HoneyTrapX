@@ -27,7 +27,7 @@ This intelligence flows into a professional admin dashboard where you can monito
 
 Let’s start with the high-level system architecture:
 
-🏗️ System Architecture
+## 🏗️ System Architecture
 
 This diagram explains how user activity travels through the system.
 
