@@ -5,6 +5,18 @@ Designed as a controlled honeypot environment, it enables **real-time threat int
 
 ---
 
+## 🎥 Live Demo
+
+🔗 **Admin Dashboard (Laptop View):**  
+https://drive.google.com/file/d/1Iq2rza6qaN5VeHSydwP_KO7t-oHq-qUR/view?usp=sharing  
+
+🔗 **User Side Experience (Mobile View):**  
+https://drive.google.com/file/d/19Lt8WPiUHLzbJcmyxnCZXJGQ0xxHanSv/view?usp=sharing  
+
+> These demos showcase both attacker-side deception and admin-side intelligence gathering in real time.
+
+---
+
 ## 🗂️ Table of Contents
 - [Features](#features)
 - [Admin Dashboard](#admin-dashboard)
